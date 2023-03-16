@@ -341,35 +341,76 @@ public class Array2Practice {
 		 * 4     X
 		 * */
 		
+		/* 내가 푼 코드
+	      String[][] arr = new String[6][6];
+	      
+	      Scanner sc = new Scanner(System.in);
+	      System.out.print("행 입력 : ");
+	      int inputrow = sc.nextInt();
+	      
+	      System.out.print("열 입력 : ");
+	      int inputcol = sc.nextInt();
+	      
+	      int i = 0;
+	      int j = 0;
+	      for(int row=0; row<arr.length; row++) {
+	         for(int col=0; col<arr[row].length; col++) {
+	            
+	            if(row==0 && col==0) {
+	               arr[row][col] = " ";
+	               
+	            } else if(row==inputrow+1 && col==inputcol+1) {
+	               arr[row][col] = "X";
+	               
+	            } else if(row==0 && col!=0) {
+	               arr[row][col] = (i++)+" ";
+	               
+	            } else if (col==0 && row != 0) {
+	               arr[row][col] = (j++)+"";
+	               
+	            } else {
+	               arr[row][col] = "  ";
+	            }
+	         }
+	      }
+	      
+	      for(int row=0; row<arr.length; row++) {
+	         for(int col=0; col<arr[row].length; col++) {
+	            System.out.print(arr[row][col]);
+	         }
+	         System.out.println();
+	      }
+	      
+	      */
+		
+		Scanner sc = new Scanner(System.in);
 		
 		String[][] arr = new String[6][6];
 		
-		int i = 0;
-		int j = 0;
+		System.out.print("행 인덱스 입력 : ");
+		int rowIndex = sc.nextInt();
+		
+		System.out.print("열 인덱스 입력 : ");
+		int colIndex = sc.nextInt();
+		
+		int num1 = 0;
+		int num2 = 0;
+		
 		for(int row=0; row<arr.length; row++) {
-			for(int col=0; col<arr[row].length; col++) {
-				
-				if(row==0 && col==0) {
-					arr[row][col] = "  ";
-					System.out.print(arr[row][col]);
+			for(int col=0; col<arr.length; col++) {
+				if(row == 0 && col != 0) {
+					arr[row][col] = num1++ + " ";
 					
-				} else if(row==0 && col!=0) {
-					arr[row][col] = (i++)+"";
-					System.out.print(arr[row][col]+" ");
-					
-				} else if (col==0 && row != 0) {
-					arr[row][col] = (j++)+"";
-					System.out.print(arr[row][col]);
+				} else if (col == 0 && row != 0) {
+					arr[row][col] = num2++ + " ";
 				} else {
 					arr[row][col] = "  ";
-					System.out.print(arr[row][col]);
 				}
-					
+				arr[rowIndex+1][colIndex+1] = "X";
+				System.out.print(arr[row][col]);
 			}
 			System.out.println();
 		}
-		
-		
 		
 		
 	}
@@ -399,6 +440,177 @@ public class Array2Practice {
 		 * 
 		 * 프로그램 종료
 		 * */
+		
+		/* 내가 푼 코드
+	      String[][] arr = new String[6][6];
+	      Scanner sc = new Scanner(System.in);
+	      
+	      int i = 0;
+	      int j = 0;
+	      for(int row=0; row<arr.length; row++) {
+	         for(int col=0; col<arr[row].length; col++) {
+	            
+	            if(row==0 && col==0) {
+	               arr[row][col] = " ";
+	               
+	            } else if(row==0 && col!=0) {
+	               arr[row][col] = (i++)+" ";
+	               
+	            } else if (col==0 && row != 0) {
+	               arr[row][col] = (j++)+"";
+	               
+	            } else {
+	               arr[row][col] = "  ";
+	            }
+	         }
+	      }
+	      
+	      while(true) {
+	         
+	         System.out.print("행 입력 : ");
+	         int inputrow = sc.nextInt();
+	         
+	         if(inputrow==99) {
+	            System.out.println("프로그램 종료");
+	            break;
+	         }
+	         
+	         System.out.print("열 입력 : ");
+	         int inputcol = sc.nextInt();
+	         
+	         arr[inputrow+1][inputcol+1] = "X";
+	         for(int row=0; row<arr.length; row++) {
+	            for(int col=0; col<arr[row].length; col++) {
+	               System.out.print(arr[row][col]);
+	            }
+	            System.out.println();
+	         } // for문 끝
+	      }
+		*/
+		
+		Scanner sc = new Scanner(System.in);
+		
+		String[][] arr = new String[6][6];
+		
+		int num1 = 0;
+		int num2 = 0;
+		
+		for(int row=0; row<arr.length; row++) {
+			for(int col=0; col<arr.length; col++) {
+				if(row == 0 && col != 0) {
+					arr[row][col] = num1++ + " ";
+					
+				} else if (col == 0 && row != 0) {
+					arr[row][col] = num2++ + " ";
+				} else {
+					arr[row][col] = "  ";
+				}
+			}
+		}
+		
+		boolean flag = true;
+		
+		System.out.print("행 인덱스 입력 : ");
+		int rowIndex = sc.nextInt();
+
+		do {
+			System.out.print("열 인덱스 입력 : ");
+			int colIndex = sc.nextInt();
+			
+			arr[rowIndex+1][colIndex+1] = "X";
+			
+			for(int row=0; row<arr.length; row++) {
+				for(int col=0; col<arr.length; col++) {
+					System.out.print(arr[row][col]);
+				}
+				System.out.println();
+			}
+			
+			System.out.print("\n행 인덱스 입력 >> ");
+			int input = sc.nextInt();
+			
+			if(input == 99) {
+				System.out.println("\n프로그램 종료");
+				flag = false;
+			}
+		} while(flag);
+		
+	}
+	
+	// 빙고판 크기를 입력 받아, 그 크기만큼의 행과 열을 가지는 2차원 배열(빙고판) 생성
+	// 1부터 크기*크기 사이의 정수 난수를 무작위 배치
+	
+	// 정수를 입력받아 빙고판에서 일치하는 부분을 찾아 해당 부분의 숫자를 "★"로 변경하고
+	// 현재 빙고 카운트가 몇인지 출력
+	// 단, 빙고판에 없는 정수를 입력한 경우 "다시 입력해주세요" 출력
+	
+	// 가로, 세로, 대각선 한 줄이 모두 "★"로 변경되어 있을 경우 빙고 카운트 1 증가
+	// 빙고 카운트 3 이상이 되면 "***Bingo!***" 출력하고 프로그램 종료
+	
+	/*[프로그램 실행]
+	 * 빙고판 크기 지정 : 5
+	 * 13  7   21  19  4
+	 * 22  6   2   8  14
+	 * 25  9  20  12   1
+	 * 17  3  18  24  11
+	 * 15  5  10  23  16
+	 * ============빙고게임 시작==========
+	 * 정수를 입력하시오 : 13
+	 *  ★  7   21  19  4
+	 * 22  6   2   8  14
+	 * 25  9  20  12   1
+	 * 17  3  18  24  11
+	 * 15  5  10  23  16
+	 * 현재 0빙고
+	 * 
+	 * 정수를 입력하시오 : 
+	 * 
+	 *  ★   ★   ★   ★   ★
+	 *  ★   ★   2   8   14
+	 *  ★   9   ★   12   1
+	 *  ★   3  18    ★  11
+	 *  ★   5  10   23   ★
+	 * 현재 3빙고
+	 * 
+	 * ***Bingo!***
+	 * */
+	
+	public void bingoGame() {
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.print("빙고판 크기 지정 : ");
+		int input = sc.nextInt();
+		
+		String[][] arr = new String[input][input];
+		
+		for(int row=0; row<arr.length; row++) {
+			for(int col=0; col<arr.length; col++) {
+				int random = (int)(Math.random()*(input*input)+1);
+				arr[row][col] = random+"";
+				
+				System.out.printf("%3d",arr[row][col]);
+			}
+			System.out.println();
+		}
+		
+		System.out.println("================= 빙고게임 시작 =================");
+		
+		while(true) {
+			System.out.println("정수를 입력하시오 : ");
+			String num = sc.next();
+			
+			for(int row=0; row<arr.length; row++) {
+				for(int col=0; col<arr.length; col++) {
+					
+					if(num.equals(arr[row][col])) {
+						arr[row][col] = "★";
+						
+					}
+				}
+			}
+			
+		}
+		
 	}
 
 

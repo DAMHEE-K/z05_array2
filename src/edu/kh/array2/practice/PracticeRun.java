@@ -6,7 +6,7 @@ public class PracticeRun {
 		Array2Practice array2Pc = new Array2Practice();
 		
 //		array2Pc.practice2();
-		array2Pc.practice9();
+		array2Pc.bingoGame();
 	
 	}
 }
